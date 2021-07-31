@@ -19,8 +19,8 @@ export const PlayerHeader: React.VFC<Props> = ({
           <Image
             priority
             className={styles.smallLogo}
-            width={700}
-            height={700}
+            width={48}
+            height={48}
             src="/logo-small.png"
             alt="small logo">
           </Image>
