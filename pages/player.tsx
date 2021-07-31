@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import nookies from "nookies";
 import { WebPlaybackSDK } from "react-spotify-web-playback-sdk";
@@ -36,7 +36,6 @@ function isTokenObject(value: any): value is TokenObject {
 export const getServerSideProps: GetServerSideProps<Props> = async ({ query, req, }) => {
   const stateFromCookies = nookies.get({ req }).state;
   const stateFromRequest = query.state;
-
   if (
     typeof stateFromCookies === "string" &&
     typeof stateFromRequest === "string" &&
@@ -74,8 +73,11 @@ const Player: React.VFC<Props> = ({ token }) => {
     callback => callback(token.access_token),
     [token.access_token],
   );
-
   const [deviceName, setDeviceName] = useState("Spotify Player on Next.js");
+
+  // useEffect(() => {
+  //   window.history.pushState({}, "", '/player')
+  // }, [])
 
   return (
     <WebPlaybackSDK
