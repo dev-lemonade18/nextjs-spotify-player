@@ -1,5 +1,7 @@
 import styles from "./PlayerHeader.module.css";
 import { TextInput } from "./TextInput";
+import Image from 'next/image'
+import Link from 'next/link'
 
 type Props = {
   deviceName: string;
@@ -14,7 +16,14 @@ export const PlayerHeader: React.VFC<Props> = ({
     <header className={styles.header}>
       <div className={styles.headerTop}>
         <div className={styles.headerLeft}>
-          <img className={styles.smallLogo} src="/logo-small.png" alt="small logo" />
+          <Image
+            priority
+            className={styles.smallLogo}
+            width={700}
+            height={700}
+            src="/logo-small.png"
+            alt="small logo">
+          </Image>
           <div className={styles.deviceNameTop}>
             <TextInput
               value={deviceName}
@@ -23,13 +32,14 @@ export const PlayerHeader: React.VFC<Props> = ({
             />
           </div>
         </div>
-        <a
-          className={styles.githubLink}
-          href="https://github.com/y-hiraoka/react-spotify-web-playback-sdk"
-          target="_blank"
-          rel="noopener noreferer">
-          GitHub
-        </a>
+        <Link href="https://github.com/y-hiraoka/react-spotify-web-playback-sdk">
+          <a
+            className={styles.githubLink}
+            target="_blank"
+            rel="noopener noreferer">
+            GitHub
+          </a>
+        </Link>
       </div>
       <div className={styles.headerBottom}>
         <TextInput
