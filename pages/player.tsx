@@ -71,28 +71,19 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
       body: params,
     }).then(res => res.json());
 
-    console.log(response)
     if (isTokenObject(response)) {
       return {
         props: { token: response },
       };
     }
   }
-  if (stateFromCookies === stateFromRequest) {
-    return {
-      redirect: {
-        destination: "/api/login",
-        permanent: false,
-      },
-    };
-  } else {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
+
+  return {
+    redirect: {
+      destination: "/",
+      permanent: false,
+    },
+  };
 };
 
 export default Player;

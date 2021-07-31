@@ -16,14 +16,6 @@ export const PlayerHeader: React.VFC<Props> = ({
     <header className={styles.header}>
       <div className={styles.headerTop}>
         <div className={styles.headerLeft}>
-          <Image
-            priority
-            className={styles.smallLogo}
-            width={48}
-            height={48}
-            src="/logo-small.png"
-            alt="small logo">
-          </Image>
           <div className={styles.deviceNameTop}>
             <TextInput
               value={deviceName}
@@ -32,7 +24,7 @@ export const PlayerHeader: React.VFC<Props> = ({
             />
           </div>
         </div>
-        <Link href="https://github.com/y-hiraoka/react-spotify-web-playback-sdk">
+        <Link href="https://github.com/dev-lemonade18/nextjs-spotify-player">
           <a
             className={styles.githubLink}
             target="_blank"
