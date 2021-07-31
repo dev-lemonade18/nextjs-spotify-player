@@ -55,9 +55,11 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ query, req
       body: params,
     }).then(res => res.json());
 
-    return {
-      props: { token: response },
-    };
+    if (isTokenObject(response)) {
+      return {
+        props: { token: response },
+      };
+    }
   }
 
   return {
@@ -75,9 +77,9 @@ const Player: React.VFC<Props> = ({ token }) => {
   );
   const [deviceName, setDeviceName] = useState("Spotify Player on Next.js");
 
-  // useEffect(() => {
-  //   window.history.pushState({}, "", '/player')
-  // }, [])
+  useEffect(() => {
+    window.history.pushState({}, "", '/player')
+  }, [])
 
   return (
     <WebPlaybackSDK
