@@ -47,6 +47,11 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   const stateFromCookies = nookies.get({ req }).state;
   const stateFromRequest = query.state;
 
+  console.log("typeof stateFromCookies: " + typeof stateFromCookies);
+  console.log("typeof stateFromRequest: " + typeof stateFromRequest);
+  console.log("stateFromCookies: " + stateFromCookies);
+  console.log("stateFromRequest: " + stateFromRequest);
+  console.log("typeof query.code: " + typeof query.code);
   if (
     typeof stateFromCookies === "string" &&
     typeof stateFromRequest === "string" &&
@@ -66,9 +71,17 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
       body: params,
     }).then(res => res.json());
 
+    console.log(response)
     if (isTokenObject(response)) {
       return {
         props: { token: response },
+      };
+    } else {
+      return {
+        redirect: {
+          destination: "/api/login",
+          permanent: false,
+        },
       };
     }
   }
