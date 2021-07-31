@@ -35,3 +35,4 @@ export const PlayerController: React.VFC = memo(() => {
     </div>
   );
 });
+PlayerController.displayName = 'PlayerController';

@@ -23,3 +23,4 @@ export const StateSummary: React.VFC<Props> = memo(({ state, summary }) => {
     </details>
   );
 });
+StateSummary.displayName = 'StateSummary';

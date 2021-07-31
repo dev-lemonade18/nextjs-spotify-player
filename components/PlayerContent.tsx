@@ -17,3 +17,4 @@ export const PlayerContent: React.VFC<{ access_token: string }> = memo(
     );
   },
 );
+PlayerContent.displayName = 'PlayerContent';
