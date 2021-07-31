@@ -39,3 +39,4 @@ export const StateConsumer: React.VFC<{ access_token: string }> = memo(
     );
   },
 );
+StateConsumer.displayName = 'StateConsumer';
