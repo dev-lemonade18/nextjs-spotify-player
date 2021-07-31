@@ -64,7 +64,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ query, req
 
   return {
     redirect: {
-      destination: "/",
+      destination: "/api/login",
       permanent: false,
     },
   };
