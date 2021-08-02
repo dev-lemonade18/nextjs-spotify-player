@@ -31,8 +31,8 @@ export const StateConsumer: React.VFC<{ access_token: string }> = memo(
     }, [playerDevice?.device_id]);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(async () => {
-      const res = await fetch("https://open.spotify.com/get_access_token?reason=transport&productType=web_player", {
+    useEffect(() => {
+      const res = fetch("https://open.spotify.com/get_access_token?reason=transport&productType=web_player", {
         "headers": {
           "accept": "application/json",
           "accept-language": "ja",
@@ -52,7 +52,7 @@ export const StateConsumer: React.VFC<{ access_token: string }> = memo(
 
       if (playbackState?.track_window.current_track.id === undefined) return;
       if (playbackState?.track_window.current_track.album.images[0].url === undefined) return;
-      const lyricJson = await fetch(`https://spclient.wg.spotify.com/color-lyrics/v1/track/${playbackState?.track_window.current_track.id}/image/${encodeURIComponent(playbackState?.track_window.current_track.album.images[0].url)}?market=from_token`, {
+      const lyricJson = fetch(`https://spclient.wg.spotify.com/color-lyrics/v1/track/${playbackState?.track_window.current_track.id}/image/${encodeURIComponent(playbackState?.track_window.current_track.album.images[0].url)}?market=from_token`, {
         "headers": {
           "accept": "application/json",
           "accept-language": "ja",
