@@ -33,7 +33,7 @@ export const StateConsumer: React.VFC<{ access_token: string }> = memo(
     useEffect(() => {
       if (playbackState?.track_window.current_track === undefined) return;
       console.log(`https://spclient.wg.spotify.com/color-lyrics/v1/track/${playbackState?.track_window.current_track.id}/image/${encodeURIComponent(playbackState?.track_window.current_track.album.images[2].url)}?market=from_token`)
-      fetch(`https://spclient.wg.spotify.com/color-lyrics/v1/track/6a2LVhfSS7LZfyUCmJ7L2J/image/https%3A%2F%2Fi.scdn.co%2Fimage%2Fab67616d0000b27385b18113e234c450882e6418?market=from_token`, {
+      fetch(`https://spclient.wg.spotify.com/color-lyrics/v1/track/${playbackState?.track_window.current_track.id}/image/${encodeURIComponent(playbackState?.track_window.current_track.album.images[2].url)}?market=from_token`, {
         "headers": {
           "accept": "application/json",
           "accept-language": "ja",
