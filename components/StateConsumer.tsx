@@ -31,8 +31,9 @@ export const StateConsumer: React.VFC<{ access_token: string }> = memo(
     }, [playerDevice?.device_id]);
 
     useEffect(() => {
-      if (playbackState?.track_window === undefined) return;
-      fetch(`https://spclient.wg.spotify.com/color-lyrics/v1/track/${playbackState?.track_window.current_track.id}/image/${encodeURIComponent(playbackState?.track_window.current_track.album.images[0].url)}?market=from_token`, {
+      if (playbackState?.track_window.current_track === undefined) return;
+      console.log(`https://spclient.wg.spotify.com/color-lyrics/v1/track/${playbackState?.track_window.current_track.id}/image/${encodeURIComponent(playbackState?.track_window.current_track.album.images[2].url)}?market=from_token`)
+      fetch(`https://spclient.wg.spotify.com/color-lyrics/v1/track/${playbackState?.track_window.current_track.id}/image/${encodeURIComponent(playbackState?.track_window.current_track.album.images[2].url)}?market=from_token`, {
         "headers": {
           "accept": "application/json",
           "accept-language": "ja",
@@ -40,7 +41,7 @@ export const StateConsumer: React.VFC<{ access_token: string }> = memo(
           "authorization": "Bearer " + access_token,
           "sec-ch-ua": "\"Chromium\";v=\"92\", \" Not A;Brand\";v=\"99\", \"Google Chrome\";v=\"92\"",
           "sec-ch-ua-mobile": "?0",
-          "spotify-app-version": "1.1.66.45.gbab0f163"
+          "spotify-app-version": "1.1.66.47.g3afed57a"
         },
         "referrer": "https://open.spotify.com/",
         "referrerPolicy": "strict-origin-when-cross-origin",
