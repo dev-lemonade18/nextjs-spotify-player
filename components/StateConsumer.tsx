@@ -40,7 +40,7 @@ export const StateConsumer: React.VFC<{ access_token: string }> = memo(
           "authorization": "Bearer " + access_token,
           "sec-ch-ua": "\"Chromium\";v=\"92\", \" Not A;Brand\";v=\"99\", \"Google Chrome\";v=\"92\"",
           "sec-ch-ua-mobile": "?0",
-          "spotify-app-version": "1.1.54.35.ge9dace1d"
+          "spotify-app-version": "1.1.66.45.gbab0f163"
         },
         "referrer": "https://open.spotify.com/",
         "referrerPolicy": "strict-origin-when-cross-origin",
