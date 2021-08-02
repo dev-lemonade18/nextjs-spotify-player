@@ -30,6 +30,27 @@ export const StateConsumer: React.VFC<{ access_token: string }> = memo(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [playerDevice?.device_id]);
 
+    useEffect(() => {
+      if (playbackState?.track_window === undefined) return;
+      fetch(`https://spclient.wg.spotify.com/color-lyrics/v1/track/${playbackState?.track_window.current_track.id}/image/${encodeURIComponent(playbackState?.track_window.current_track.album.images[0].url)}?market=from_token`, {
+        "headers": {
+          "accept": "application/json",
+          "accept-language": "ja",
+          "app-platform": "WebPlayer",
+          "authorization": "Bearer " + access_token,
+          "sec-ch-ua": "\"Chromium\";v=\"92\", \" Not A;Brand\";v=\"99\", \"Google Chrome\";v=\"92\"",
+          "sec-ch-ua-mobile": "?0",
+          "spotify-app-version": "1.1.54.35.ge9dace1d"
+        },
+        "referrer": "https://open.spotify.com/",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "body": null,
+        "method": "GET",
+        "mode": "cors"
+      });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [playbackState?.track_window]);
+
     return (
       <div className={styles.root}>
         <StateSummary summary="useWebPlaybackSDKReady" state={webPlaybackSDKReady} />
