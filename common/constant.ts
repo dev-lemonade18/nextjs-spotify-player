@@ -9,7 +9,7 @@ export const SPOTIFY_SCOPES = [
   // "user-read-playback-position",
   // "user-read-playback-state",
   "user-modify-playback-state",
-  "user-read-currently-playing",
+  //"user-read-currently-playing",
   // "app-remote-control",
   "streaming",
   // "playlist-modify-public",
