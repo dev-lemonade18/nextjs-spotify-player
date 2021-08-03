@@ -27,6 +27,7 @@ export const StateConsumer: React.VFC<{ access_token: string }> = memo(
           Authorization: `Bearer ${access_token}`,
         },
       });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [playerDevice?.device_id]);
 
     return (
