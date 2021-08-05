@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const StateSummary: React.VFC<Props> = memo(({ state, summary }) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <details
