@@ -78,7 +78,7 @@ const Player: React.VFC<Props> = ({ token }) => {
   const [deviceName, setDeviceName] = useState("Spotify Player on Next.js");
 
   useEffect(() => {
-    window.history.pushState({}, "", '/player')
+    // window.history.pushState({}, "", '/player')
   }, [])
 
   return (
