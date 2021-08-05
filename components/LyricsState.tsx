@@ -19,7 +19,7 @@ export const LyricsState: React.VFC<Props> = memo(({ track_id, album, artist, ti
     useEffect(() => {
         const getLyrics = async () => {
             const params = new FormData();
-            params.append("clientAppId", String(app_id));
+            params.append("clientAppId", `${app_id}`);
             params.append("terminalType", "0");
             params.append("lyricsType", "3");
             params.append("key_album", `${album}`);
