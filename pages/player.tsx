@@ -1,16 +1,12 @@
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import nookies from "nookies";
 import { WebPlaybackSDK } from "react-spotify-web-playback-sdk";
-import {
-  SPOTIFY_API_TOKEN_URL,
-  SPOTIFY_CLIENT_ID,
-  SPOTIFY_CLIENT_SECRET,
-  SPOTIFY_REDIRECT_URI,
-} from "../common/constant";
+import { SPOTIFY_API_TOKEN_URL, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REDIRECT_URI, } from "../common/constant";
 import styles from "../styles/player.module.css";
 import { PlayerHeader } from "../components/PlayerHeader";
-import { PlayerContent } from "../components/PlayerContent";
+import { PlayerController } from "../components/PlayerContoller";
+import { LyricsPlayer } from "../components/LyricsPlayer";
 
 type TokenObject = {
   access_token: string;
@@ -20,7 +16,10 @@ type TokenObject = {
   refresh_token: string;
 };
 
-type Props = { token: TokenObject };
+type Props = {
+  token: TokenObject
+  app_id: string | undefined
+};
 
 function isTokenObject(value: any): value is TokenObject {
   return (
@@ -57,7 +56,10 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ query, req
 
     if (isTokenObject(response)) {
       return {
-        props: { token: response },
+        props: {
+          token: response,
+          app_id: process.env.LYRICS_CLIENT_APP_ID
+        },
       };
     }
   }
@@ -70,7 +72,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ query, req
   };
 };
 
-const Player: React.VFC<Props> = ({ token }) => {
+const Player: React.VFC<Props> = ({ token, app_id }) => {
   const getOAuthToken: Spotify.PlayerInit["getOAuthToken"] = useCallback(
     callback => callback(token.access_token),
     [token.access_token],
@@ -92,7 +94,8 @@ const Player: React.VFC<Props> = ({ token }) => {
           <PlayerHeader deviceName={deviceName} deviceNameOnChange={setDeviceName} />
         </div>
         <main className={styles.player}>
-          <PlayerContent access_token={token.access_token} />
+          <PlayerController></PlayerController>
+          <LyricsPlayer access_token={token.access_token} app_id={app_id}></LyricsPlayer>
         </main>
       </div>
     </WebPlaybackSDK>
