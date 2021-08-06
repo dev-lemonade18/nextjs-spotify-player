@@ -14,6 +14,7 @@ export const PlaybackState: React.VFC<Props> = memo(({ state, app_id }) => {
     return (
         <div className={styles.root}>
             <LyricsState
+                current_time={state?.position}
                 track_id={state?.track_window.current_track.id}
                 album={state?.track_window.current_track.album.name}
                 artist={state?.track_window.current_track.artists[0].name}

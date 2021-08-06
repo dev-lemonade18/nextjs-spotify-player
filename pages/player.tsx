@@ -80,7 +80,7 @@ const Player: React.VFC<Props> = ({ token, app_id }) => {
   const [deviceName, setDeviceName] = useState("Spotify Player on Next.js");
 
   useEffect(() => {
-    // window.history.pushState({}, "", '/player')
+    window.history.pushState({}, "", '/player')
   }, [])
 
   return (
@@ -94,8 +94,8 @@ const Player: React.VFC<Props> = ({ token, app_id }) => {
           <PlayerHeader deviceName={deviceName} deviceNameOnChange={setDeviceName} />
         </div>
         <main className={styles.player}>
-          <PlayerController></PlayerController>
           <LyricsPlayer access_token={token.access_token} app_id={app_id}></LyricsPlayer>
+          <PlayerController></PlayerController>
         </main>
       </div>
     </WebPlaybackSDK>
