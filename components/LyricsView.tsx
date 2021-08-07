@@ -24,6 +24,8 @@ export const LyricsView: React.VFC<Props> = memo(({ current_time, lyrics_object 
         for (var index = 0; index < Object.keys(lyrics_object).length; index++) {
             if (lyrics_object[index].starttime <= current_time + 500 && current_time + 500 >= lyrics_object[index].endtime) {
                 lyric = lyrics_object[index].line
+            } else {
+                lyric = ""
             }
         }
     }
